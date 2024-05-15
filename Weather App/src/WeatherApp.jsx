@@ -24,6 +24,7 @@ const WeatherApp = () => {
 
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data)
 
         setWeatherData({
             humidity: data.main.humidity,
@@ -32,31 +33,24 @@ const WeatherApp = () => {
             location: data.name
         });
         
-        if (data.weather[0].icon === "01d" || data.weather[0].icon === "01n"){
+        if (data.weather[0].main === "Clear"){
             setWicon("./clear.png");
         }
-        else if (data.weather[0].icon === "02d" || data.weather[0].icon === "02n"){
+        else if (data.weather[0].main === "Smoke"){
             setWicon("./cloud.png");
         }
-        else if (data.weather[0].icon === "03d" || data.weather[0].icon === "03n"){
+        else if (data.weather[0].main === "Drizzle"){
             setWicon("./drizzle.png");
         }
-        else if (data.weather[0].icon === "04d" || data.weather[0].icon === "04n"){
+        else if (data.weather[0].main === "Drizzle"){
             setWicon("./drizzle.png");
         }
-        else if(data.weather[0].icon === "09d" || data.weather[0].icon === "09n"){
+        else if(data.weather[0].main === "Rain"){
             setWicon("./rain.png");
         }
-        else if(data.weather[0].icon === "10d" || data.weather[0].icon === "10n"){
-            setWicon("./rain.png");
-        }
-        else if(data.weather[0].icon === "13d" || data.weather[0].icon === "13n"){
+        else if(data.weather[0].main === "Snow"){
             setWicon("./snow.png");
         }
-        else{
-            setWicon("./clear.png");
-        }
-
     };
 
     return (
